@@ -75,7 +75,7 @@ motor, em que ela será controlada
 
 **Sensor:**
 
-O sensor utilizado será o encoder óptico, responsável por medir a velocidade de rotação do motor. Seu funcionamento baseia-se na utilização de um disco acoplado ao eixo do motor, contendo aberturas ou marcações, e um conjunto emissor/receptor de luz. Esses dados são enviados ao ESP32, permitindo calcular a velocidade da esteira e realizar o controle em malha fechada.
+O sensor será responsável por medir a velocidade de rotação do motor. Os dados serão enviados ao ESP32, permitindo calcular a velocidade da esteira e realizar o controle em malha fechada.
 
 
 ### 2. Estudo e configuração do ESP IDF para aplicar no projeto
@@ -162,7 +162,7 @@ Esse comportamento elimina descontinuidades, reduzindo significativamente esfor�
 
 Portanto, embora a rampa linear seja mais simples de implementar, ela pode causar impactos indesejados no sistema, enquanto a rampa em S, é capaz de oferecer uma variação mais suave de velocidade, melhorando o desempenho de controle do sistema.
 
-O sistema a ser controlado é a velocidade de uma esteira, por meio do feedback do encoder óptico. Portanto será utilizado a rampa em "S", já que contribui para uma melhor estabilidade e precisão, além de ter uma melhor resposta dinâmica do sistema, limita a corrente de partida e melhora a estabilidade com carga variável. Garantindo um controle e acionamento suave do motor.
+O sistema a ser controlado é a velocidade de uma esteira, por meio do feedback do sensor de velocidade. Portanto será utilizado a rampa em "S", já que contribui para uma melhor estabilidade e precisão, além de ter uma melhor resposta dinâmica do sistema, limita a corrente de partida e melhora a estabilidade com carga variável. Garantindo um controle e acionamento suave do motor.
 
 Referências (links/datasheets/livros)
 *************************************
