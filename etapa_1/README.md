@@ -161,7 +161,8 @@ Esse comportamento elimina descontinuidades, reduzindo significativamente esfor�
 <img width="761" height="176" alt="image" src="https://github.com/user-attachments/assets/4a00f36f-cfdb-4641-b447-9eb2867b966f" />
 
 Portanto, embora a rampa linear seja mais simples de implementar, ela pode causar impactos indesejados no sistema, enquanto a rampa em S, é capaz de oferecer uma variação mais suave de velocidade, melhorando o desempenho de controle do sistema.
-O sistema a ser controlado é a velocidade de uma esteira, por meio do feedback do encoder óptico. Portanto será utilizado a rampa em "S", já que contribui para uma melhor estabilidade e precisão, além de ter uma melhor resposta dinâmica do sistema, limita a corrente de partida e melhora a estabilidade com carga variável. Garantindo um controle e acionamento suave do motor
+
+O sistema a ser controlado é a velocidade de uma esteira, por meio do feedback do encoder óptico. Portanto será utilizado a rampa em "S", já que contribui para uma melhor estabilidade e precisão, além de ter uma melhor resposta dinâmica do sistema, limita a corrente de partida e melhora a estabilidade com carga variável. Garantindo um controle e acionamento suave do motor.
 
 Referências (links/datasheets/livros)
 *************************************
