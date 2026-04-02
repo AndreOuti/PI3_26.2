@@ -56,7 +56,8 @@ Abaixo está um gif do funcionamento desse sensor:
 
 ![as5600](https://github.com/pepeu321/PI3_26.1/blob/main/etapa_1/imagens/gif_as5600.gif)
 
-Como pode ser visto, girando o ímã, acende os leds equivalentes a posição em que o ímã girou. 
+Como pode ser visto, girando o ímã, acende os leds equivalentes à posição em que o ímã girou.
+
 E para obter o rpm do motor utilizando o as5600, primeiro é necessário ler continuamente o valor de posição angular fornecido pelo sensor. Esse valor é disponibilizado via comunicação I2C como um número inteiro entre 0 e 4095, que representa uma volta completa de 360 graus. Em seguida, deve-se armazenar duas leituras consecutivas do ângulo, uma anterior e outra atual, separadas por um intervalo de tempo conhecido. Com essas duas medições, calcula-se a variação angular subtraindo o valor anterior do atual. Como o sensor trabalha em escala circular, é necessário corrigir possíveis descontinuidades quando ocorre a passagem de 4095 para 0 (ou vice-versa), ajustando a diferença somando ou subtraindo 4096 quando o valor ultrapassar metade da escala.
 
 Após obter a variação angular corrigida, converte-se essa diferença em número de voltas dividindo o resultado por 4096. Em seguida, divide-se esse valor pelo intervalo de tempo entre as medições, obtendo-se a velocidade em rotações por segundo. Por fim, multiplica-se esse resultado por 60 para converter para rpm. Esse processo deve ser repetido continuamente para acompanhar a variação da velocidade do motor ao longo do tempo, sendo recomendável aplicar algum tipo de filtragem ou média para reduzir ruídos e oscilações na medição.
@@ -77,7 +78,7 @@ Divide-se pelos pulsos por volta e converte-se para minutos, obtendo o rpm.
 
 #### Escolha entre encoder as5600 e encoder óptico
 
-O microcontrolador a ser usado será o esp idf. O ESP32 possui o periférico de hardware PCNT (Pulse Counter), um contador de pulsos. Então o esp contará os pulsos do encoder automaticamente sem sobrecarregar a CPU.
+O microcontrolador a ser usado será o esp idf. O ESP32 possui o periférico de hardware PCNT (Pulse Counter), um contador de pulsos. Então escolhendo o encoder óptico o esp contará os pulsos do encoder automaticamente sem sobrecarregar a CPU.
 Isso permite medições de RPM mais precisas e confiáveis, mesmo em altas velocidades.
 Além disso, integrado ao ESP-IDF com FreeRTOS, facilita a leitura periódica e o controle em tempo real do motor.
 
@@ -85,9 +86,23 @@ Além disso, integrado ao ESP-IDF com FreeRTOS, facilita a leitura periódica e 
 
 Referência do esp, comprovando a existência do pcnt.
 
+Por isso a melhor escolha para medir o rpm do motor é o **encoder óptico**, pois se aproveita da arquitetura do microcontrolador e as contas para cálculo do rpm são mais simples do que com o as5600.
+
 ### 4. Rampa de aceleração linear ou rampa em S
 
-Editar
+O soft start é a técnica de partida suave do motor, onde o PWM (ou tensão/corrente) é aumentado gradualmente ao invés de aplicar valor máximo instantaneamente.
+Ele é necessário na esteira porque a carga pode variar (peso), e uma partida brusca gera picos de corrente, trancos mecânicos e desgaste.
+Sem soft start, o motor pode sofrer quedas de tensão, aquecimento e até perda de controle de velocidade inicial.
+
+Para implementar, usa-se uma rampa no sinal de controle (PWM), aumentando-o ao longo do tempo até atingir o valor desejado.
+Essa rampa pode ser baseada em tempo ou em referência de RPM, usando o encoder como feedback.
+
+Os principais tipos são:
+
+Rampa linear (Linear ramp / trapezoidal profile): aumento constante do PWM, simples porém mais brusco.
+Rampa em S (S-curve / jerk-limited): início e fim suaves, com variação gradual da aceleração.
+
+Para o problema da esteira, a melhor escolha é a rampa em S, pois reduz trancos, limita corrente de partida e melhora a estabilidade com carga variável.
 
 
 Referências (links/datasheets/livros)
