@@ -47,6 +47,10 @@ Editar
 
 Essa atividade tem por objetivo definir o sensor de velocidade do motor. Desse modo o microcontrolador terá o rpm do motor e decidirá se é necessário aumentar ou diminuir a corrente do driver do motor para que o motor gire na rotação pré-determinada.
 
+Inicialmente iríamos utilizar o encoder as5600, que utiliza o efeito hall, e por isso o nome desta atividade ficou definição do sensor de efeito hall. Porém o mais indicado para o nosso uso é o encoder óptico de arduino.
+
+![alternativol](https://github.com/pepeu321/PI3_26.1/blob/main/etapa_1/imagens/encoders.png)
+
 4. Rampa de aceleração linear ou rampa em S
 =======
 
