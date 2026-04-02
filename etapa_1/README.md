@@ -32,8 +32,50 @@ Apresentar o desenvolvimento da etapa contendo detalhes de implementação (se h
 
 ### 1. Diagrama de blocos do sistema
 
+Diagrama de Blocos:
 
-Essa tarefa está apresentada primeiro porque apresenta uma visão geral do funcionamento do projeto quando ficar pronto.
+<img width="798" height="265" alt="image" src="https://github.com/user-attachments/assets/8bc2e720-88b2-4fef-b79a-4b81943d1b55" />
+
+
+
+**Descrição dos Blocos:**
+
+
+**Celular:** 
+
+O celular é responsável por permitir a interação do usuário com o sistema. Através dele, é 
+possível definir a velocidade desejada da esteira e visualizar, em tempo real, os dados de 
+funcionamento, como a velocidade atual medida. 
+
+**Controlador (ESP32):** 
+
+O controlador é o elemento central do sistema, responsável por realizar o processamento 
+das informações. Ele compara a velocidade desejada, enviada pelo celular, com a 
+velocidade real medida pelo sensor, calculando o erro do sistema. A partir desse erro, o 
+controlador gera um sinal PWM para ajustar a velocidade do motor. Além disso, realiza a 
+comunicação com o celular e o tratamento dos dados provenientes do sensor. 
+
+**Driver do Motor:**
+
+O driver do é responsável por fazer a interface entre o ESP32 e o motor. Ele recebe o sinal 
+PWM do controlador e fornece a corrente necessária para o acionamento do motor, 
+permitindo o controle da velocidade da esteira de forma eficiente. 
+
+**Motor:**
+
+O sistema utiliza um motor DC escovado (Brushed DC Motor), responsável por converter 
+energia elétrica em movimento mecânico para acionar a esteira. Sua velocidade é 
+controlada por meio da variação do sinal PWM aplicado, permitindo ajuste contínuo da 
+rotação. 
+
+**Esteira:** 
+
+A esteira é o sistema a ser controlado. Seu movimento depende diretamente da atuação do 
+motor, em que ela será controlada 
+
+**Sensor:**
+
+O sensor utilizado será o encoder óptico, responsável por medir a velocidade de rotação do motor. Seu funcionamento baseia-se na utilização de um disco acoplado ao eixo do motor, contendo aberturas ou marcações, e um conjunto emissor/receptor de luz. Esses dados são enviados ao ESP32, permitindo calcular a velocidade da esteira e realizar o controle em malha fechada.
 
 
 ### 2. Estudo e configuração do ESP IDF para aplicar no projeto
