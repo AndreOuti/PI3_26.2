@@ -99,6 +99,26 @@ Essa rampa pode ser baseada em tempo ou em referência de RPM, usando o encoder 
 
 Os principais tipos são:
 
+**Rampa Linear:**
+
+Uma rampa de aceleração linear é uma maneira mais simples de controlar a variação de velocidade em motores. A velocidade tem um aumento com o tempo, o que resulta numa aceleração constante.
+
+No gráfico de velocidade pelo tempo, que é uma rampa, a reta crescente mostra que a velocidade do motor aumenta de forma uniforme até atingir o valor desejado. Enquanto no gráfico de aceleração possui um valor fixo durante seu intervalo, tendo uma mudança brusca no início e no fim.
+
+<img width="734" height="166" alt="image" src="https://github.com/user-attachments/assets/c38d0026-c35c-4269-9755-d926432ea3cf" />
+
+Esse tipo de rampa apresenta descontinuidade no início e no fim, onde a aceleração sofre uma variação brusca. Essa variação pode causar impactos mecânicos, picos de corrente e até a perda de controle de velocidade inicial. 
+
+**Rampa em S:**
+
+A rampa em S é usada para garantir transições mais suaves na variação de velocidade do motor. A aceleração não é constante, variando de forma gradual ao longo do tempo.
+Seu gráfico de velocidade tem o formato de “S”, onde a velocidade tem um início e um fim suave. A aceleração tem um comportamento de crescer gradualmente até um valor máximo e retornar a zero. 
+
+Esse comportamento elimina descontinuidades, reduzindo significativamente esforços mecânicos, vibrações e picos de corrente.
+
+<img width="761" height="176" alt="image" src="https://github.com/user-attachments/assets/4a00f36f-cfdb-4641-b447-9eb2867b966f" />
+
+
 Rampa linear (Linear ramp / trapezoidal profile): aumento constante do PWM, simples porém mais brusco.
 Rampa em S (S-curve / jerk-limited): início e fim suaves, com variação gradual da aceleração.
 
