@@ -59,9 +59,7 @@ Abaixo está um gif do funcionamento desse sensor:
 
 ##################### gif as5600
 
-![alternativol](https://github.com/pepeu321/PI3_26.1/blob/main/etapa_1/imagens/gif_as5600.gif)
-
-![Encoder](https://raw.githubusercontent.com/pepeu321/PI3_26.1/main/etapa_1/imagens/gif_as5600.gif)
+![as5600](https://github.com/pepeu321/PI3_26.1/blob/main/etapa_1/imagens/gif_as5600.gif)
 
 4. Rampa de aceleração linear ou rampa em S
 =======
